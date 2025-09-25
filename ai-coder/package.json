@@ -1,0 +1,53 @@
+{
+  "name": "ai-coder",
+  "displayName": "AI Coder",
+  "description": "Generate code with AI, with project context support.",
+  "version": "0.0.1",
+  "publisher": "your-publisher-name",
+  "engines": { "vscode": "^1.80.0" },
+  "categories": ["Other"],
+  "icon": "images/icon.png",
+
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onCommand:ai-coder.generateCode"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "ai-coder.generateCode",
+        "title": "AI coder"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "ai-coder.generateCode",
+          "group": "navigation",
+          "when": "editorLangId == java" 
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.104.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "eslint": "^8.39.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.4",
+    "@vscode/test-electron": "^2.3.0"
+  }
+}
